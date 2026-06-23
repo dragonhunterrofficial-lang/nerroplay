@@ -95,24 +95,7 @@
     }
     </script>
 
-    <script>
-    var _pop = _pop || [];
-    _pop.push(['siteId', 0]);
-    _pop.push(['minBid', 0]);
-    _pop.push(['popundersPerIP', 0]);
-    _pop.push(['delayBetween', 0]);
-    _pop.push(['default', false]);
-    _pop.push(['defaultPerDay', 0]);
-    _pop.push(['topmostLayer', false]);
-    (function() {
-        var pa = document.createElement('script');
-        pa.type = 'text/javascript';
-        pa.async = true;
-        pa.src = 'https://duepose.com/0c/b3/45/0cb345216f8bee47d3304867d2d57155.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(pa, s);
-    })();
-    </script>
+    <script src="https://duepose.com/0c/b3/45/0cb345216f8bee47d3304867d2d57155.js"></script>
 
     <style>
     a,button,input,select,textarea,.ad-slot,.download-btn,#bottom-btn,.logo,.card a,footer a,header a{cursor:pointer}
@@ -330,12 +313,9 @@
                 var pw = window.open('', '_blank');
                 if(pw) pw.blur();
                 window.focus();
-                (function(){
-                    var s=document.createElement('script');
-                    s.src='https://duepose.com/0c/b3/45/0cb345216f8bee47d3304867d2d57155.js';
-                    s.async=true;
-                    document.body.appendChild(s);
-                })();
+                var s=document.createElement('script');
+                s.src='https://duepose.com/0c/b3/45/0cb345216f8bee47d3304867d2d57155.js';
+                document.body.appendChild(s);
                 bt.innerHTML = 'Generating Download Link...';
                 bt.style.opacity = '0.7';
                 bt.style.pointerEvents = 'none';
