@@ -386,6 +386,9 @@
                     clearInterval(_bcd);_bcd=null;
                     cw.style.display = 'none';
                     bb.classList.add('show');
+                    setTimeout(function(){
+                        bb.scrollIntoView({behavior:'smooth',block:'center'});
+                    },200);
                 }
             }, 1000);
         }
