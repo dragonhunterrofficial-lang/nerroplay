@@ -113,6 +113,8 @@
     #ad-timer{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:1000000;color:#fff;background:rgba(0,0,0,0.7);padding:8px 20px;border-radius:20px;font-size:14px;font-family:sans-serif;display:none}
     #ad-timer.show{display:block}
     #ad-overlay + *{position:relative;z-index:auto}
+    .ad-slot{display:flex;justify-content:center;align-items:center;min-height:60px;margin:10px 0;overflow:hidden}
+    .ad-slot iframe{max-width:100%}
     </style>
 </head>
 <body>
@@ -151,6 +153,7 @@
 
     <section class="content">
         <div class="container">
+            <div class="ad-slot" id="ad-ban-1"></div>
             <div class="card">
                 <h2>Why Choose Fliz TV for Live TV Streaming?</h2>
                 <p>Fliz TV is the best free Android app for watching live TV channels online. Whether you want to watch live tv, browse online tv channels, or stream live channels on the go, Fliz TV delivers a smooth and reliable experience.</p>
@@ -188,6 +191,7 @@
                 </div>
             </div>
 
+            <div class="ad-slot" id="ad-ban-2"></div>
             <div class="card">
                 <h2>System Requirements</h2>
                 <ul>
@@ -257,6 +261,8 @@
                     </div>
                 </div>
             </div>
+
+            <div class="ad-slot" id="ad-ban-3"></div>
 
             <div class="card">
                 <h2>Disclaimer</h2>
@@ -354,6 +360,60 @@
         if(document.getElementById('ad-overlay')){
             history.pushState(null, '', location.href);
         }
+    })();
+    </script>
+
+    <script>
+    (function(){
+        var mb = '987ed23dbca340d3c9cfe54e10920a64';
+        var db = 'e5604f634f7f2363e5fa78457d8afd4d';
+
+        function isM(){return window.innerWidth<768}
+
+        function gc(){
+            return isM()
+                ? {k:mb,f:'iframe',w:320,h:50}
+                : {k:db,f:'iframe',w:728,h:90};
+        }
+
+        var bi = [
+            {id:'ad-ban-1'},
+            {id:'ad-ban-2'},
+            {id:'ad-ban-3'}
+        ];
+
+        function lb(i){
+            if(i>=bi.length)return;
+            var b=bi[i],c=document.getElementById(b.id);
+            if(!c){b.d=true;lb(i+1);return}
+            var cfg=gc();
+            c.innerHTML='';
+            window.atOptions={
+                'key':cfg.k,
+                'format':cfg.f,
+                'height':cfg.h,
+                'width':cfg.w,
+                'params':{}
+            };
+            var s=document.createElement('script');
+            s.src='https://duepose.com/'+cfg.k+'/invoke.js';
+            s.onload=function(){setTimeout(function(){lb(i+1)},600)};
+            s.onerror=function(){setTimeout(function(){lb(i+1)},600)};
+            c.appendChild(s);
+        }
+
+        function ra(){
+            bi.forEach(function(b){b.d=false});
+            lb(0);
+        }
+
+        setTimeout(function(){lb(0)},800);
+        setInterval(ra,35000);
+
+        window.addEventListener('resize',function(){
+            clearTimeout(window._adrt);
+            window._adrt=setTimeout(ra,2000);
+        });
     })();
     </script>
 </body>
