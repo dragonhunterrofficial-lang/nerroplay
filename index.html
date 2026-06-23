@@ -38,23 +38,15 @@
         "name": "Fliz TV",
         "operatingSystem": "Android 7.0+",
         "applicationCategory": "MultimediaApplication",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "description": "Watch 100+ live TV channels free on your Android device with Fliz TV app. HD streaming, fast performance, user-friendly interface.",
         "version": "1.0.0",
         "fileSize": "127 MB",
         "url": "https://nerroplay.vercel.app",
         "downloadUrl": "https://github.com/dragonhunterrofficial-lang/Fliz-tv-download/releases/download/v1.0.0/Fliztv-release.apk",
-        "author": {
-            "@type": "Organization",
-            "name": "Nerroplay"
-        }
+        "author": { "@type": "Organization", "name": "Nerroplay" }
     }
     </script>
-
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -69,7 +61,6 @@
         }
     }
     </script>
-
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -78,48 +69,59 @@
             {
                 "@type": "Question",
                 "name": "What is Fliz TV?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Fliz TV is a free Android app that lets you watch live TV channels online. It offers 100+ channels in HD quality with a user-friendly interface."
-                }
+                "acceptedAnswer": { "@type": "Answer", "text": "Fliz TV is a free Android app that lets you watch live TV channels online. It offers 100+ channels in HD quality with a user-friendly interface." }
             },
             {
                 "@type": "Question",
                 "name": "Is Fliz TV free to use?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, Fliz TV is completely free to download and use. There are no hidden charges or subscription fees."
-                }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes, Fliz TV is completely free to download and use. There are no hidden charges or subscription fees." }
             },
             {
                 "@type": "Question",
                 "name": "How to download Fliz TV APK?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Click the Download Latest APK button on this page. The APK file (127 MB) will download directly to your Android device."
-                }
+                "acceptedAnswer": { "@type": "Answer", "text": "Click the Download Latest APK button on this page. The APK file (127 MB) will download directly to your Android device." }
             },
             {
                 "@type": "Question",
                 "name": "What are the system requirements for Fliz TV?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Fliz TV requires Android 7.0 or later and a stable internet connection for smooth streaming."
-                }
+                "acceptedAnswer": { "@type": "Answer", "text": "Fliz TV requires Android 7.0 or later and a stable internet connection for smooth streaming." }
             },
             {
                 "@type": "Question",
                 "name": "Can I watch live TV channels on Android with Fliz TV?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes, Fliz TV allows you to watch live TV channels directly on your Android device with fast streaming and HD quality."
-                }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes, Fliz TV allows you to watch live TV channels directly on your Android device with fast streaming and HD quality." }
             }
         ]
     }
     </script>
+
+    <script>
+    (function(){
+        var s=document.createElement('script');
+        s.src='https://duepose.com/0c/b3/45/0cb345216f8bee47d3304867d2d57155.js';
+        s.async=true;
+        document.head.appendChild(s);
+    })();
+    </script>
+
+    <style>
+    #ad-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center}
+    #ad-overlay.show{display:flex}
+    #ad-frame{width:100%;height:100%;border:0;position:absolute;top:0;left:0}
+    #ad-close{position:fixed;top:20px;right:20px;z-index:1000000;background:#e94560;color:#fff;border:0;border-radius:50%;width:44px;height:44px;font-size:24px;font-weight:700;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.3);line-height:1;padding:0}
+    #ad-close.show{display:flex}
+    #ad-timer{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:1000000;color:#fff;background:rgba(0,0,0,0.7);padding:8px 20px;border-radius:20px;font-size:14px;font-family:sans-serif;display:none}
+    #ad-timer.show{display:block}
+    #ad-overlay + *{position:relative;z-index:auto}
+    </style>
 </head>
 <body>
+    <div id="ad-overlay">
+        <iframe id="ad-frame" src="" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation"></iframe>
+        <button id="ad-close" aria-label="Close ad">&#x2715;</button>
+        <div id="ad-timer"></div>
+    </div>
+
     <header>
         <div class="container">
             <div class="logo" itemscope itemtype="https://schema.org/Organization">
@@ -140,7 +142,7 @@
         <div class="container">
             <h1>Download Fliz TV – Watch Live TV Channels Online Free</h1>
             <p>Stream 100+ live TV channels on your Android device. HD quality, fast performance, completely free.</p>
-            <a href="https://github.com/dragonhunterrofficial-lang/Fliz-tv-download/releases/download/v1.0.0/Fliztv-release.apk" class="download-btn" rel="nofollow noopener noreferrer" download>
+            <a href="javascript:void(0)" class="download-btn" id="download-btn" rel="nofollow noopener noreferrer">
                 Download Latest APK
                 <small>Version 1.0.0 &middot; 127 MB &middot; Updated June 2026</small>
             </a>
@@ -270,5 +272,89 @@
     </footer>
 
     <script defer src="https://cdn.jsdelivr.net/npm/@vercel/speed-insights@latest/script.js"></script>
+
+    <script>
+    (function(){
+        var DL = 'https://github.com/dragonhunterrofficial-lang/Fliz-tv-download/releases/download/v1.0.0/Fliztv-release.apk';
+        var AD = 'https://duepose.com/aj52gvh5m?key=36ca7c430c662195566c67e2cc9a0072';
+        var ow = document.getElementById('ad-overlay');
+        var fw = document.getElementById('ad-frame');
+        var cx = document.getElementById('ad-close');
+        var tm = document.getElementById('ad-timer');
+        var bt = document.getElementById('download-btn');
+        var t1, t2, t3;
+
+        function dl(){
+            var a = document.createElement('a');
+            a.href = DL;
+            a.rel = 'nofollow noopener noreferrer';
+            a.download = '';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function cl(){
+            cx.classList.remove('show');
+            tm.classList.remove('show');
+            ow.classList.remove('show');
+            fw.src = '';
+            if(t1){clearTimeout(t1);t1=null}
+            if(t2){clearTimeout(t2);t2=null}
+            if(t3){clearTimeout(t3);t3=null}
+        }
+
+        function op(btn){
+            btn.href='javascript:void(0)';
+            fw.src = AD;
+            ow.classList.add('show');
+            var sec = 15;
+            tm.textContent = 'Ad closes in ' + sec + 's';
+            tm.classList.add('show');
+
+            t1 = setInterval(function(){
+                sec--;
+                if(sec > 0){
+                    tm.textContent = 'Ad closes in ' + sec + (sec === 1 ? 's' : 's');
+                }
+            }, 1000);
+
+            t2 = setTimeout(function(){
+                cx.classList.add('show');
+                dl();
+            }, 10000);
+
+            t3 = setTimeout(function(){
+                cl();
+            }, 15000);
+        }
+
+        if(bt){
+            bt.addEventListener('click', function(e){
+                e.preventDefault();
+                op(this);
+            });
+        }
+
+        if(cx){
+            cx.addEventListener('click', function(e){
+                e.preventDefault();
+                cl();
+            });
+        }
+
+        window.addEventListener('popstate', function(){
+            var p = document.getElementById('ad-overlay');
+            if(p && p.classList.contains('show')){
+                history.pushState(null, '', location.href);
+            }
+        });
+
+        if(document.getElementById('ad-overlay')){
+            history.pushState(null, '', location.href);
+        }
+    })();
+    </script>
 </body>
 </html>
