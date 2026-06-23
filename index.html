@@ -319,7 +319,9 @@
                 bt.innerHTML = 'Generating Download Link...';
                 bt.style.opacity = '0.7';
                 bt.style.pointerEvents = 'none';
-                startBottomCD();
+                setTimeout(function(){
+                    startBottomCD();
+                }, 2000);
             });
         }
 
