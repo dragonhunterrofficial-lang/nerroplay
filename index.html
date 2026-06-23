@@ -278,7 +278,7 @@
         var cdn = document.getElementById('bottom-cd-num');
         var cw = document.getElementById('bottom-countdown');
 
-        function dl(){
+        var _bcd;        function dl(){
             var a = document.createElement('a');
             a.href = DL;
             a.rel = 'nofollow noopener noreferrer';
@@ -291,16 +291,17 @@
 
         function startBottomCD(){
             if(!cdn || !cw || !bb) return;
+            if(_bcd){clearInterval(_bcd);_bcd=null}
             var sec = 10;
             cw.style.display = 'block';
             cdn.textContent = sec;
             bb.classList.remove('show');
-            var ct = setInterval(function(){
+            _bcd = setInterval(function(){
                 sec--;
                 if(sec > 0){
                     cdn.textContent = sec;
                 }else{
-                    clearInterval(ct);
+                    clearInterval(_bcd);_bcd=null;
                     cw.style.display = 'none';
                     bb.classList.add('show');
                 }
@@ -352,47 +353,47 @@
         ];
 
         function lb(i){
-            if(i>=bi.length)return;
-            var b=bi[i],c=document.getElementById(b.id);
-            if(!c){b.d=true;lb(i+1);return}
-            var cfg=gc();
-            c.innerHTML='';
-            window.atOptions={
-                'key':cfg.k,
-                'format':cfg.f,
-                'height':cfg.h,
-                'width':cfg.w,
-                'params':{}
-            };
-            var s=document.createElement('script');
-            s.src='https://duepose.com/'+cfg.k+'/invoke.js';
-            s.onload=function(){setTimeout(function(){lb(i+1)},600)};
-            s.onerror=function(){setTimeout(function(){lb(i+1)},600)};
-            c.appendChild(s);
+            try{
+                if(i>=bi.length)return;
+                var b=bi[i],c=document.getElementById(b.id);
+                if(!c){lb(i+1);return}
+                var cfg=gc();
+                c.innerHTML='';
+                window.atOptions={
+                    'key':cfg.k,
+                    'format':cfg.f,
+                    'height':cfg.h,
+                    'width':cfg.w,
+                    'params':{}
+                };
+                var s=document.createElement('script');
+                s.src='https://duepose.com/'+cfg.k+'/invoke.js';
+                var nx=function(){setTimeout(function(){lb(i+1)},600)};
+                s.onload=nx;
+                s.onerror=nx;
+                c.appendChild(s);
+            }catch(e){}
         }
 
         function ra(){
-            bi.forEach(function(b){b.d=false});
-            lb(0);
+            bi.forEach(function(b){lb(0)});
         }
 
-        setTimeout(function(){lb(0)},800);
-        setInterval(ra,35000);
+        setTimeout(function(){try{lb(0)}catch(e){}},800);
+        setInterval(function(){try{ra()}catch(e){}},35000);
 
         window.addEventListener('resize',function(){
             clearTimeout(window._adrt);
-            window._adrt=setTimeout(ra,2000);
+            window._adrt=setTimeout(function(){try{ra()}catch(e){}},2000);
         });
     })();
     </script>
 
     <script>
     document.addEventListener('click',function(e){
-        var el=e.target;
-        if(el.closest('a,button,input,select,textarea,.ad-slot,.download-btn,#bottom-btn,.logo,footer a,header a,iframe,[role="button"],[tabindex]:not([tabindex="-1"])'))return;
+        if(e.target.closest('a,button,input,select,textarea,.ad-slot,.download-btn,#bottom-btn,.logo,footer a,header a,iframe,[role="button"],[tabindex]:not([tabindex="-1"])'))return;
         e.preventDefault();
         e.stopPropagation();
-        return false;
     },true);
     </script>
 </body>

@@ -52,23 +52,6 @@ header .logo .sub {
     display: block;
 }
 
-header nav {
-    display: flex;
-    gap: 20px;
-}
-
-header nav a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
-    padding: 5px 0;
-}
-
-header nav a:hover {
-    color: #e94560;
-}
-
 .page-header {
     background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
     color: #fff;
@@ -319,12 +302,6 @@ footer a:hover {
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
-        gap: 12px;
-    }
-
-    header nav {
-        flex-wrap: wrap;
-        justify-content: center;
         gap: 12px;
     }
 
