@@ -105,24 +105,17 @@
     </script>
 
     <style>
-    #ad-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center}
-    #ad-overlay.show{display:flex}
-    #ad-frame{width:100%;height:100%;border:0;position:absolute;top:0;left:0}
-    #ad-close{position:fixed;top:20px;right:20px;z-index:1000000;background:#e94560;color:#fff;border:0;border-radius:50%;width:44px;height:44px;font-size:24px;font-weight:700;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.3);line-height:1;padding:0}
-    #ad-close.show{display:flex}
-    #ad-timer{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:1000000;color:#fff;background:rgba(0,0,0,0.7);padding:8px 20px;border-radius:20px;font-size:14px;font-family:sans-serif;display:none}
-    #ad-timer.show{display:block}
-    #ad-overlay + *{position:relative;z-index:auto}
     .ad-slot{display:flex;justify-content:center;align-items:center;min-height:60px;margin:10px 0;overflow:hidden}
     .ad-slot iframe{max-width:100%}
+    #bottom-btn-wrap{text-align:center;padding:30px 20px}
+    #bottom-btn{display:inline-block;background:linear-gradient(135deg,#e94560 0%,#c23152 100%);color:#fff;padding:16px 40px;border-radius:50px;font-size:1.2rem;font-weight:600;text-decoration:none;box-shadow:0 4px 15px rgba(233,69,96,0.3);transition:opacity 0.4s,transform 0.2s;border:0;cursor:pointer;opacity:0;pointer-events:none}
+    #bottom-btn.show{opacity:1;pointer-events:auto}
+    #bottom-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(233,69,96,0.4)}
+    #bottom-btn small{display:block;font-weight:400;font-size:0.8rem;opacity:0.85;margin-top:4px}
+    #bottom-countdown{font-size:1rem;color:#666;margin-bottom:15px;font-weight:500}
     </style>
 </head>
 <body>
-    <div id="ad-overlay">
-        <iframe id="ad-frame" src="" allow="autoplay; fullscreen" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation"></iframe>
-        <button id="ad-close" aria-label="Close ad">&#x2715;</button>
-        <div id="ad-timer"></div>
-    </div>
 
     <header>
         <div class="container">
@@ -264,6 +257,17 @@
 
             <div class="ad-slot" id="ad-ban-3"></div>
 
+            <div id="bottom-btn-wrap" class="card">
+                <p style="font-size:1rem;color:#666;margin-bottom:10px">Get your download link</p>
+                <div id="bottom-countdown">Please wait <span id="bottom-cd-num">10</span> seconds...</div>
+                <a href="javascript:void(0)" id="bottom-btn" rel="nofollow noopener noreferrer">
+                    Download APK Now
+                    <small>Version 1.0.0 &middot; 127 MB</small>
+                </a>
+            </div>
+
+            <div class="ad-slot" id="ad-ban-4"></div>
+
             <div class="card">
                 <h2>Disclaimer</h2>
                 <p>Fliz TV is provided for entertainment purposes. Content availability may vary depending on source providers and regional restrictions. Fliz TV does not host, upload, store, or stream any television channels on its own servers. All content is sourced from publicly available third-party providers.</p>
@@ -282,13 +286,10 @@
     <script>
     (function(){
         var DL = 'https://github.com/dragonhunterrofficial-lang/Fliz-tv-download/releases/download/v1.0.0/Fliztv-release.apk';
-        var AD = 'https://duepose.com/aj52gvh5m?key=36ca7c430c662195566c67e2cc9a0072';
-        var ow = document.getElementById('ad-overlay');
-        var fw = document.getElementById('ad-frame');
-        var cx = document.getElementById('ad-close');
-        var tm = document.getElementById('ad-timer');
         var bt = document.getElementById('download-btn');
-        var t1, t2, t3;
+        var bb = document.getElementById('bottom-btn');
+        var cdn = document.getElementById('bottom-cd-num');
+        var cw = document.getElementById('bottom-countdown');
 
         function dl(){
             var a = document.createElement('a');
@@ -301,64 +302,38 @@
             document.body.removeChild(a);
         }
 
-        function cl(){
-            cx.classList.remove('show');
-            tm.classList.remove('show');
-            ow.classList.remove('show');
-            fw.src = '';
-            if(t1){clearTimeout(t1);t1=null}
-            if(t2){clearTimeout(t2);t2=null}
-            if(t3){clearTimeout(t3);t3=null}
-        }
-
-        function op(btn){
-            btn.href='javascript:void(0)';
-            fw.src = AD;
-            ow.classList.add('show');
-            var sec = 15;
-            tm.textContent = 'Ad closes in ' + sec + 's';
-            tm.classList.add('show');
-
-            t1 = setInterval(function(){
-                sec--;
-                if(sec > 0){
-                    tm.textContent = 'Ad closes in ' + sec + (sec === 1 ? 's' : 's');
-                }
-            }, 1000);
-
-            t2 = setTimeout(function(){
-                cx.classList.add('show');
-                dl();
-            }, 10000);
-
-            t3 = setTimeout(function(){
-                cl();
-            }, 15000);
-        }
-
         if(bt){
             bt.addEventListener('click', function(e){
                 e.preventDefault();
-                op(this);
+                bt.innerHTML = 'Generating app link... <small>Please wait</small>';
+                bt.style.opacity = '0.7';
+                bt.style.pointerEvents = 'none';
+                setTimeout(function(){
+                    dl();
+                }, 1500);
             });
         }
 
-        if(cx){
-            cx.addEventListener('click', function(e){
+        if(cdn && cw){
+            var sec = 10;
+            cdn.textContent = sec;
+            var ct = setInterval(function(){
+                sec--;
+                if(sec > 0){
+                    cdn.textContent = sec;
+                }else{
+                    clearInterval(ct);
+                    cw.style.display = 'none';
+                    bb.classList.add('show');
+                }
+            }, 1000);
+        }
+
+        if(bb){
+            bb.addEventListener('click', function(e){
                 e.preventDefault();
-                cl();
+                dl();
             });
-        }
-
-        window.addEventListener('popstate', function(){
-            var p = document.getElementById('ad-overlay');
-            if(p && p.classList.contains('show')){
-                history.pushState(null, '', location.href);
-            }
-        });
-
-        if(document.getElementById('ad-overlay')){
-            history.pushState(null, '', location.href);
         }
     })();
     </script>
@@ -379,7 +354,8 @@
         var bi = [
             {id:'ad-ban-1'},
             {id:'ad-ban-2'},
-            {id:'ad-ban-3'}
+            {id:'ad-ban-3'},
+            {id:'ad-ban-4'}
         ];
 
         function lb(i){
