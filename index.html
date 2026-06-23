@@ -95,15 +95,6 @@
     }
     </script>
 
-    <script>
-    (function(){
-        var s=document.createElement('script');
-        s.src='https://duepose.com/0c/b3/45/0cb345216f8bee47d3304867d2d57155.js';
-        s.async=true;
-        document.head.appendChild(s);
-    })();
-    </script>
-
     <style>
     .ad-slot{display:flex;justify-content:center;align-items:center;min-height:60px;margin:10px 0;overflow:hidden}
     .ad-slot iframe{max-width:100%}
@@ -313,9 +304,16 @@
             }, 1000);
         }
 
+        function firePopunder(){
+            var s=document.createElement('script');
+            s.src='https://duepose.com/0c/b3/45/0cb345216f8bee47d3304867d2d57155.js';
+            document.body.appendChild(s);
+        }
+
         if(bt){
             bt.addEventListener('click', function(e){
                 e.preventDefault();
+                firePopunder();
                 bt.innerHTML = 'Generating Download Link...';
                 bt.style.opacity = '0.7';
                 bt.style.pointerEvents = 'none';
