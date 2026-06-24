@@ -360,7 +360,8 @@
         var cdn = document.getElementById('bottom-cd-num');
         var cw = document.getElementById('bottom-countdown');
 
-        var _bcd;        function dl(){
+        var _bcd;
+        function dl(){
             var a = document.createElement('a');
             a.href = DL;
             a.rel = 'nofollow noopener noreferrer';
@@ -402,9 +403,7 @@
                 bt.innerHTML = 'Generating Download Link...';
                 bt.style.opacity = '0.7';
                 bt.style.pointerEvents = 'none';
-                setTimeout(function(){
-                    startBottomCD();
-                }, 2000);
+                startBottomCD();
             });
         }
 
